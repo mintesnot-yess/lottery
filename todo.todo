@@ -1,0 +1,27 @@
+24 ?= 3 = 15
+15 - 11 = 4
+
+
+
+15h * 60m = 900m
+900m * 60s = 54,000s
+
+
+15h = 54,000s 
+
+
+
+flutter clean
+flutter build apk --release
+flutter pub add [package-name]
+
+
+
+
+
+Platform  Firebase App Id
+web       1:145607831260:web:6fec71a511690c5126ce19
+android   1:145607831260:android:89d1488434f8fafe26ce19
+ios       1:145607831260:ios:7bc4d527cdee167426ce19
+macos     1:145607831260:ios:7bc4d527cdee167426ce19
+windows   1:145607831260:web:255783aa96835a1626ce19

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "145607831260",
+    "project_id": "flutterfire-ui-codelab-66038",
+    "storage_bucket": "flutterfire-ui-codelab-66038.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:145607831260:android:89d1488434f8fafe26ce19",
+        "android_client_info": {
+          "package_name": "com.example.lottery"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyARMrupXehoCkum2RBWHJG8hUANwcrFUL0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
