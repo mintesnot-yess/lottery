@@ -5,6 +5,7 @@ import 'package:lottery/components/cards.dart';
 import 'package:lottery/firebase_options.dart';
 import 'package:lottery/pages/auth/signin.dart';
 import 'package:lottery/pages/auth/signup.dart';
+import 'package:lottery/pages/notification.dart';
 import 'package:lottery/pages/profile.dart';
 import 'package:lottery/pages/setting.dart';
 
@@ -36,11 +37,12 @@ class MyApp extends StatelessWidget {
           ? const Home()
           : SignInScreen(),
       routes: {
-        '/home': (context) => Home(),
-        '/profile': (context) => ProfilePage(),
-        '/setting': (context) => SettingPage(),
-        '/login': (context) => SignInScreen(),
+        '/home': (context) => const Home(),
+        '/profile': (context) => const ProfilePage(),
+        '/setting': (context) => const SettingPage(),
+        '/login': (context) => const SignInScreen(),
         '/signup': (context) => SignUpScreen(),
+        '/notification': (context) => const NotificationPage(),
       },
     );
   }
@@ -79,16 +81,16 @@ class _HomeState extends State<Home> {
               });
             },
           ),
-          title: Column(
+          title: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                '${currentUser?.email}',
-                style: const TextStyle(
-                    color: Colors.black54,
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold),
-              ),
+              // Text(
+              //   '100',
+              //   style: TextStyle(
+              //       color: Colors.black54,
+              //       fontSize: 20,
+              //       fontWeight: FontWeight.bold),
+              // ),
             ],
           ),
           actions: [
@@ -96,8 +98,7 @@ class _HomeState extends State<Home> {
               icon: const Icon(Icons.notifications,
                   color: Color.fromARGB(255, 82, 82, 82)),
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SignInScreen()));
+                Navigator.pushNamed(context, '/notification');
               },
             ),
           ],

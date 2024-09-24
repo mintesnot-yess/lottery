@@ -13,7 +13,10 @@ class _NotificationPageState extends State<NotificationPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Notification')),
       body: const Center(
-        child: Text('Notification page'),
+        child: Text(
+          'No Notifications',
+          style: TextStyle(fontSize: 25),
+        ),
       ),
     );
   }

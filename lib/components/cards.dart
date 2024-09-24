@@ -1,6 +1,5 @@
 // ignore_for_file: depend_on_referenced_packages
 
-
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:lottery/pages/games/number.dart';
@@ -109,7 +108,7 @@ class _FirstCardState extends State<FirstCard> {
       height: 270,
       decoration: const BoxDecoration(
           image: DecorationImage(
-            image: AssetImage("images/background.jpeg"),
+            image: AssetImage("images/background1.jpeg"),
             fit: BoxFit.fill,
           ),
           borderRadius: BorderRadius.all(Radius.circular(10))),
@@ -129,7 +128,7 @@ class _FirstCardState extends State<FirstCard> {
                   animatedTexts: [
                     ColorizeAnimatedText(
                         speed: const Duration(seconds: 1),
-                        " ET1000",
+                        "1000,000",
                         textStyle: const TextStyle(
                           fontSize: 40,
                           fontWeight: FontWeight.bold,

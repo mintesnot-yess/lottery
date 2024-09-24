@@ -19,21 +19,6 @@ class _SettingPageState extends State<SettingPage> {
       appBar: AppBar(
         title: const Text('Settings'),
       ),
-      bottomNavigationBar: Container(
-        height: 50,
-        child: MaterialButton(
-          onPressed: () {
-            AuthService().LogOut(context: context);
-          },
-          child: const Center(
-            child: Text(
-              'LOGOUT',
-              style: TextStyle(
-                  color: Color.fromARGB(255, 255, 70, 70), fontSize: 20),
-            ),
-          ),
-        ),
-      ),
       body: ListView(
         children: [
           ListTile(

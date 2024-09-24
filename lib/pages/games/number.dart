@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottery/main.dart';
 import 'package:slide_countdown/slide_countdown.dart';
@@ -12,10 +14,10 @@ class NumberScreen extends StatefulWidget {
   _NumberScreenState createState() => _NumberScreenState();
 }
 
-class _NumberScreenState extends State<NumberScreen> {
-  List<int> selectedNumbers = [];
-  final List<int> numbers = List.generate(10, (index) => index);
+List<int> selectedNumbers = [];
 
+class _NumberScreenState extends State<NumberScreen> {
+  final List<int> numbers = List.generate(10, (index) => index);
 
   @override
   void initState() {
@@ -25,8 +27,7 @@ class _NumberScreenState extends State<NumberScreen> {
 
   void _updateTime() {
     Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-      });
+      setState(() {});
     });
   }
 
@@ -69,10 +70,7 @@ class _NumberScreenState extends State<NumberScreen> {
             padding: EdgeInsets.all(8.0),
             child: Text(
               'Make a payment',
-              style: TextStyle(
-                  fontSize: 25,
-                  color: Color.fromARGB(255, 55, 39, 175),
-                  fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
             ),
           ),
         ),
@@ -114,7 +112,7 @@ class _NumberScreenState extends State<NumberScreen> {
                     ),
                     child: Center(
                       child: Text(
-                        '${selectedNumbers.join(",")}',
+                        '${selectedNumbers.join()}',
                         style: const TextStyle(
                             color: Color(0xFF6654F2),
                             fontSize: 30,
@@ -126,17 +124,15 @@ class _NumberScreenState extends State<NumberScreen> {
               ),
               const SizedBox(height: 30),
               const SlideCountdown(
-                      duration: Duration(hours: 12),
-                      decoration: BoxDecoration(
-                        color: Colors.transparent,
-                      ),style: TextStyle(
+                duration: Duration(hours: 12),
+                decoration: BoxDecoration(
+                  color: Colors.transparent,
+                ),
+                style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                 ),
-
-                      
-                      ),
-               
+              ),
               const SizedBox(height: 10),
               const SizedBox(height: 20),
               Container(
@@ -254,16 +250,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
             },
           ),
           const SlideCountdown(
-                      duration:  Duration(hours: 12),
-                      decoration:  BoxDecoration(
-                        color: Colors.transparent,
-                      ),style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                ),
-
-                      
-                      ),
+            duration: Duration(hours: 12),
+            decoration: BoxDecoration(
+              color: Colors.transparent,
+            ),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 16,
+            ),
+          ),
         ],
       ),
     );
@@ -301,20 +296,20 @@ class _PaymentScreenState extends State<PaymentScreen> {
   Widget _buildSelectedNumbers() {
     // ignore: prefer_const_constructors
     return Column(
-      children: const [
-        Text(
+      children: [
+        const Text(
           'Selected Numbers',
           style: TextStyle(
               fontSize: 19,
               color: Color.fromARGB(255, 187, 187, 187),
               fontWeight: FontWeight.bold),
         ),
-        SizedBox(
+        const SizedBox(
           height: 20,
         ),
         Text(
-          '2,3,4,5,6',
-          style: TextStyle(
+          selectedNumbers.join(),
+          style: const TextStyle(
               fontSize: 25, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ],
@@ -382,20 +377,15 @@ class _PaymentScreenState extends State<PaymentScreen> {
       ),
       child: MaterialButton(
         onPressed: () {
-          //navigate to home page
+          addTicket(ticketNumber: selectedNumbers.join());
 
-          
-Navigator.push(context,
-                 MaterialPageRoute(
-                        builder: (context) => const Home()));
-
-          
-          
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const Home()));
         },
         child: const Padding(
           padding: EdgeInsets.all(8.0),
           child: Text(
-            'Pay via Card',
+            'Pay via Telebirr',
             style: TextStyle(
                 fontSize: 25,
                 color: Color.fromARGB(255, 55, 39, 175),
@@ -404,5 +394,22 @@ Navigator.push(context,
         ),
       ),
     );
+  }
+}
+
+Future<void> addTicket({required String ticketNumber}) async {
+  try {
+    // ignore: non_constant_identifier_names
+    var CurrentUser = FirebaseAuth.instance.currentUser!;
+    final FirebaseFirestore firestore = FirebaseFirestore.instance;
+
+    await firestore.collection('ticket').add({
+      'ticket-number': ticketNumber,
+      'user_id': CurrentUser.uid,
+      // add to current date or timestamp
+      'date': DateTime.now().toUtc().toString(),
+    });
+  } on FirebaseAuthException catch (e) {
+    print(e.message);
   }
 }
