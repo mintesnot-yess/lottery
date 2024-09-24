@@ -10,8 +10,8 @@ class AuthService {
     try {
       await FirebaseAuth.instance
           .createUserWithEmailAndPassword(email: email, password: password);
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SignInScreen()));
+
+      Navigator.popAndPushNamed(context, '/home');
     } on FirebaseAuthException catch (e) {
       print("Error creating user: ${e.message}");
       String errorMessage = '';
@@ -42,8 +42,7 @@ class AuthService {
       await FirebaseAuth.instance
           .signInWithEmailAndPassword(email: email, password: password);
 
-      Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => SignInScreen()));
+      Navigator.popAndPushNamed(context, '/home');
     } on FirebaseAuthException catch (e) {
       print("Error creating user: ${e.message}");
       String errorMessage = '';
@@ -67,8 +66,6 @@ class AuthService {
 
   Future<void> LogOut({required BuildContext context}) async {
     await FirebaseAuth.instance.signOut();
-
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => SignInScreen()));
+    Navigator.popAndPushNamed(context, '/login');
   }
 }

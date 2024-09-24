@@ -4,7 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:lottery/components/cards.dart';
 import 'package:lottery/firebase_options.dart';
 import 'package:lottery/pages/auth/signin.dart';
+import 'package:lottery/pages/auth/signup.dart';
 import 'package:lottery/pages/profile.dart';
+import 'package:lottery/pages/setting.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -33,6 +35,13 @@ class MyApp extends StatelessWidget {
       home: FirebaseAuth.instance.currentUser?.email != null
           ? const Home()
           : SignInScreen(),
+      routes: {
+        '/home': (context) => Home(),
+        '/profile': (context) => ProfilePage(),
+        '/setting': (context) => SettingPage(),
+        '/login': (context) => SignInScreen(),
+        '/signup': (context) => SignUpScreen(),
+      },
     );
   }
 }
