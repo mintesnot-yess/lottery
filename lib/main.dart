@@ -35,13 +35,13 @@ class MyApp extends StatelessWidget {
       ),
       home: FirebaseAuth.instance.currentUser?.email != null
           ? const Home()
-          : SignInScreen(),
+          : const SignInScreen(),
       routes: {
         '/home': (context) => const Home(),
         '/profile': (context) => const ProfilePage(),
         '/setting': (context) => const SettingPage(),
         '/login': (context) => const SignInScreen(),
-        '/signup': (context) => SignUpScreen(),
+        '/signup': (context) => const SignUpScreen(),
         '/notification': (context) => const NotificationPage(),
       },
     );

@@ -55,7 +55,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: const Text('Profile'),
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
         height: 50,
         child: MaterialButton(
           onPressed: () {
@@ -119,7 +119,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
             ),
             MaterialButton(
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
                 onPressed: () {
                   // navigate to home page
                   Navigator.push(context, MaterialPageRoute(

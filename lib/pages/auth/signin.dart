@@ -94,7 +94,7 @@ class _SignInScreenState extends State<SignInScreen> {
                             right: BorderSide(color: Colors.grey),
                           ),
                         ),
-                        child: Icon(Icons.alternate_email),
+                        child: const Icon(Icons.alternate_email),
                       ),
                       Expanded(
                         child: TextField(

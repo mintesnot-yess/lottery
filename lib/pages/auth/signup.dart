@@ -98,7 +98,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             right: BorderSide(color: Colors.grey),
                           ),
                         ),
-                        child: Icon(Icons.person_outline_outlined),
+                        child: const Icon(Icons.person_outline_outlined),
                       ),
                       Expanded(
                         child: TextField(
@@ -146,7 +146,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             right: BorderSide(color: Colors.grey),
                           ),
                         ),
-                        child: Icon(Icons.phone),
+                        child: const Icon(Icons.phone),
                       ),
                       Expanded(
                         child: TextField(
@@ -196,7 +196,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                             right: BorderSide(color: Colors.grey),
                           ),
                         ),
-                        child: Icon(Icons.alternate_email),
+                        child: const Icon(Icons.alternate_email),
                       ),
                       Expanded(
                         child: TextField(
